@@ -342,7 +342,7 @@ export class TikTokScraper extends EventEmitter {
                 ...(proxy.proxy && proxy.socks ? { agent: proxy.proxy } : {}),
                 ...(proxy.proxy && !proxy.socks ? { proxy: `http://${proxy.proxy}/` } : {}),
                 ...(this.strictSSL === false ? { rejectUnauthorized: false } : {}),
-                timeout: 10000,
+                timeout: 20000,
             } as unknown) as OptionsWithUri;
 
             const session = this.sessionList[Math.floor(Math.random() * this.sessionList.length)];
@@ -1225,6 +1225,7 @@ export class TikTokScraper extends EventEmitter {
 
             throw new Error('No available parser for html page')
         } catch (error) {
+            console.error('Could not parse video meta', error);
             throw new Error(`Can't extract video metadata: ${this.input}`);
         }
     }
