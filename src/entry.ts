@@ -45,6 +45,8 @@ const getInitOptions = () => {
         headers: {
             'user-agent': CONST.userAgent(),
             referer: 'https://www.tiktok.com/',
+            accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'accept-encoding': 'gzip, deflate, br',
         },
     };
 };
